@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+
+            const h2 = document.createElement("h2");
+            h2.innerText = "아무 키보드 버튼 누르기"
+            document.body.appendChild(h2);
+
+            //이벤트 발생시 그 이벤트와 관련된 정보는
+            //콜백함수의 첫번째 매개변수로 들어간다.
+            document.addEventListener("keydown",(이벤트객체)=>{
+                h2.innerHTML = `keydown:${이벤트객체.code}`
+            })
+            document.addEventListener("keyup",()=>{
+                h2.innerHTML = "keyup"
+            })
+
+
+            const h1 = document.querySelector(".h1");
+            const textarea = document.querySelector("textarea");
+
+            // textarea.addEventListener("keyup",()=>{
+            //     h1.textContent = `글자 수 : ${textarea.value.length}`
+            // })
+            //보통은 아래와 같이 event.currentTarget을 사용한다.
+            //event.currentTarget이란 이벤트를 발생시킨 객체를 의미한다.
+            textarea.addEventListener("keyup",()=>{
+                h1.textContent = `글자 수 : ${event.currentTarget.value.length}`
+            })
+            //아래도 위와 완전히 같은 내용의 다른방식(익명함수 사용)
+            // textarea.addEventListener("keyup",function(){
+            //     h1.textContent = `글자 수 : ${this.value.length}`
+            // })
+
+            const a = document.querySelector("a");
+            a.addEventListener("click",(e)=>{
+                e.preventDefault()
+            })
+            //다른 사용례로 마우스 우클릭을 방지하기 위해서는
+            //click대신 contextmenu를 이용하면 된다.
+        })
+    </script>
+</head>
+<body>
+    <h1 class="h1">글자수 : 0</h1>
+    <textarea></textarea>
+
+    <!-- 아래와같이 어떤것에 작용을 했을때
+    기본적으로 일어나는 이벤트를 기본이벤트라한다. -->
+    <!-- 이와같은 기본이벤트를 막기 위해서는 preventDefault를 사용한다. -->
+    <a href="https://www.youtube.com/">유튜브링크</a>
+</body>
+</html>

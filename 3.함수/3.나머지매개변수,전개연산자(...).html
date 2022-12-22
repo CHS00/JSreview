@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //나머지 매개변수
+        const 함수 = function (a,b,...매개변수) {
+            console.log(a,b,매개변수);
+        }
+
+        //자료형이 무조건 배열로 된다.
+        //...에는 남은 매개변수가 들어가므로 앞쪽에는 사용할수없다.
+        // (...매개변수,a,b) 와 같은 형태로는 사용 불가
+
+        함수()
+        함수(1)
+        함수(1,2)
+        함수(1,2,3)
+        함수(1,2,3,4)
+
+
+        //전개연산자
+        const fn = function (a,b,c) {
+            console.log(a,b,c);
+        }
+
+        const a = [1,2,3];
+        //함수 fn에 요소 1 2 3이 들어가게 하려면 아래와같이 써야함
+        fn(a[0],a[1],a[2]);
+        //그러나 이는 아래와 같이 간단하게 쓸수 있다.
+        fn(...a);
+        
+        //정리하자면 전개연산자 사용시 배열에 있는 내용을
+        //전개해서 사용할수 있게 해줌.
+    </script>
+</body>
+</html>

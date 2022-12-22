@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const classic = function(){} //기본적인 형태
+
+        const f = function(){
+            // 함수 실행되면 이곳으로 점프
+            console.log(`안녕하세요+${x}`);
+            console.log(`안녕하세요+${x}`);
+            console.log(`안녕하세요+${x}`);
+            //함수가 끝나면 원래의 (22)로 돌아감 = 리턴
+        };
+        
+        const x = 10
+        f();
+
+
+        const fc = function(아무거나/*매개변수*/){
+            return 아무거나 + 5
+            //해당 값을 가지고 원래위치로 리턴(리턴값)
+        }
+
+        console.log(fc(5));
+
+        const sum = function(x){
+            let output = 0;
+            for (let i = 0; i < x; i++) {
+                output += i+1
+            }
+            return output;
+        };
+
+        console.log(sum(10));
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            //생성
+
+            //createElement로 요소를 만들고
+            const header = document.createElement("h1");
+            header.textContent = 'createElement로 만든 태그'
+            header.style.color = "red"
+
+            const body =document.querySelector("body");
+            //appendChild로 요소를 붙임
+            body.appendChild(header)
+
+
+            //제거
+            //removeChild로 제거
+            setTimeout(()=>{
+                //body.removeChild(header)
+                //header태그의 부모가 body이기 때문에 
+                //header.parentNode가 즉 body이다.
+                header.parentNode.removeChild(header)
+            },2000)
+
+            
+            //이동
+            const h2 = document.createElement("h2")
+            h2.textContent = "안녕하세요"
+
+            const first = document.querySelector(".first")
+            const second = document.querySelector(".second")
+
+            //똑같이 appendChild를 사용하면 된다.
+            // first.appendChild(h2);
+            // setTimeout(()=>{
+            //     second.appendChild(h2);
+            // },2000)
+
+            //1번째 방법
+            const toFirst = ()=>{
+                first.appendChild(h2);
+                setTimeout(toSecond,1000)
+            }
+            
+            const toSecond = ()=>{
+                second.appendChild(h2);
+                setTimeout(toFirst,1000)
+            }
+
+            toFirst();
+
+            //2번째 방법
+            const h4 = document.createElement("h4")
+            h4.textContent = "안녕하세요"
+
+            const array = [
+                document.querySelector(".first"),
+                document.querySelector(".second")
+            ]
+
+            let counter = 0
+            const fun = () =>{
+                array[counter%2].appendChild(h4);
+                counter++
+            }
+            fun()
+            setInterval(fun,1000)
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="first">
+        <h1>첫번째 div태그 내부</h1>
+    </div>
+    <hr>
+    <div class="second">
+        <h1>두번째 div태그 내부</h1>
+    </div>
+</body>
+</html>

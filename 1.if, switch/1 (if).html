@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="id"></h1>
+    <script>
+        // || = or연산자
+        
+        // const a = prompt("읭")
+        // if (a=="읭") {
+        //     document.getElementById("id").innerHTML="읭"
+        // }else{
+        //     document.getElementById("id").innerHTML="읭읭???"
+        // }
+
+        
+
+        const hour = (new Date()).getHours()
+
+        if (hour < 10) {
+            document.getElementById("id").innerHTML="아침먹을 시간입니다"
+        }else if(hour < 16){
+            document.getElementById("id").innerHTML="점심먹을 시간입니다"
+        }else{
+            document.getElementById("id").innerHTML="저녁먹을 시간입니다"
+        }
+        </script>
+</body>
+</html>

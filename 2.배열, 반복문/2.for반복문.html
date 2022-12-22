@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //배열과 사용할 경우
+        //forof, forin
+
+        //범용적으로 사용할 경우
+        //for
+
+
+        //forin, forof는 배열의 요소 수 만큼 반복발생
+        //in이니까 'in'dex라고 생각하기
+        const 배열 = ["사과","바나나","귤"]
+
+        for (const 요소 of 배열) {
+            console.log(요소)
+            //사과 바나나 귤 로 출력
+        }
+            
+        for (const 인덱스 in 배열) {
+            console.log(인덱스, 배열[인덱스])
+            //0 사과 1바나나 2귤 로 출력
+        }
+
+        //for
+        for (let i = 0; i < 5; i++) {
+            console.log(`${i}번째 반복문입니다.`)
+        }
+
+        //그냥 쉽게 for은 let으로 for in,of는 const로 선언한다고 외울것
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //배열뒤에 추가 push
+        const a = [1,3,5];
+        a.push(100)
+        console.log(a);
+        
+        //배열 중간에 요소 추가 splice(인덱스,0,요소)
+        a.splice(1,0,"추가");
+        console.log(a);
+        
+        //배열 중간에 요소 제거 splice(인덱스,1)
+        a.splice(0,1);
+        console.log(a);
+        
+        //배열 내부 값 위치 찾기 indexOf(요소)
+        console.log(a.indexOf("추가"));
+
+        //응용
+        const index = "추가";
+        a.splice(index,1);
+        console.log(a);
+
+        //split()
+        //()안의 내용을 기준으로 구문자를 잘라 배열에 저장함.
+        const str = "1,2,3,4";
+        const arr = str.split(",");
+        console.log(arr);
+    </script>
+</body>
+</html>

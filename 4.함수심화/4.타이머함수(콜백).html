@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const a = setTimeout(function(){
+            console.log('setTimeout 함수입니다')
+        },2000)
+        //특정한 시간 후에 한 번
+        //setTimeout(콜백함수,밀리초단위시간)
+
+
+        const b = setInterval(function(){
+            console.log('setInterval 함수입니다')
+        },2000) //특정한 시간마다
+
+        console.log(a,b);
+
+        //멈추고싶은경우
+        clearTimeout(a);
+        clearInterval(b);
+    </script>
+</body>
+</html>

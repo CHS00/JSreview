@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            const input = document.querySelector(".cal");
+            const buttonA = document.querySelector("#btn1");
+            const p = document.querySelector(".ans");
+            
+            buttonA.addEventListener("click",()=>{
+                p.textContent = Number(input.value)*2.54 + "cm"
+            })
+            
+            // textarea도 위와 동일한 방법으로 가능함
+            const area = document.querySelector("#area");
+            const answer = document.querySelector(".ans2");
+            const answer3 = document.querySelector(".ans3");
+            
+            area.addEventListener("keyup",()=>{
+                // keydown과 keypress는 조금 다르게 작동한다.
+                // 이벤트 발생순서 : keydown-keypress-값들어감-keyup
+                answer.textContent = Number(area.value)*2.54 + "cm"
+            })
+            
+            area.addEventListener("change",()=>{
+                // change이벤트는 입력양식 전체에 값 입력을 마쳤을 때
+                // (enter나 커서가 다른곳으로 떠난 경우)
+                answer3.textContent = Number(area.value)*2.54 + "cm"
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- value속성을 이용 -->
+    <!-- change, keydown, keyup, keypress이벤트등을 사용 -->
+    <!-- 한줄입력 -->
+    <input type="text">
+    <!-- 여러줄입력 -->
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <!-- p에서 contenteditable를 사용하면 글자변경이 가능해짐 -->
+    <p contenteditable="true">ㅇㅂㅇ</p>
+
+    <hr>
+    <input type="text" class="cal"> inch <br>
+    <button id="btn1">계산</button>
+    <p class="ans"></p>
+
+    <hr>
+
+    <textarea name="" id="area" cols="30" rows="10"></textarea> inch <br>
+    <p class="ans2"></p>
+    <p class="ans3"></p>
+</body>
+</html>

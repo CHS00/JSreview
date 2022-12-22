@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //객체의 키와 값을 정적으로 생성한다.
+        const pet = {
+            name:"구름",
+            age:8
+        }
+
+        //추가적으로 속성을 부여하는것은
+        //객체의 키와값을 동적으로 생성한다고 함
+        pet.color = "brown";
+        console.log(pet);
+        
+        //제거할 경우에는 delete를 사용
+        delete pet.color;
+        console.log(pet);
+
+        //기본자료형 - 스택에 값저장
+        //숫자, 문자열, 불
+
+        //객체자료형 - 스택과 힙 연결 - 속성과 메서드 가질수있음
+        //함수, 배열, 객체
+
+        const a = [];
+        a.내맘대로속성 = 10;
+        console.log(a.내맘대로속성);
+        console.log(a);
+        
+        delete a.내맘대로속성
+        console.log(a);
+
+        const b= ()=>{};
+        b.value = 10;
+        console.log(b.value);
+        
+        //그러나 기본자료형은 속성과 메소드를 추가할수없다
+        const c = 10;
+        c.value = 20;
+        console.log(c.value);
+
+
+        console.log(typeof(a));
+        //배열인지 확인이 되지않고 객체라는것만이 표시됨
+        console.log(Array.isArray(a));
+        //Array.isArray로 확인함
+        console.log(typeof(b));
+        //그러나 함수는 그대로 나옴
+
+        //함수를 객체처럼 다룰때 일급객체로 다룬다고 표현함
+
+
+        const A = new Number(10)
+        const B = new String("문자열")
+        const C = new Boolean(true)
+        //위 함수 앞에 new를 붙이면 내부의 값을 객체로 만들어준다
+        console.log(typeof(A))
+        console.log(typeof(B))
+        console.log(typeof(C))
+        
+        A.value = 100;
+        console.log(A.value);
+
+
+        //프로토타입
+        //프로토타입에 무언가를 추가하면
+        //기본자료형에 추가적인 속성을 부여할 수 있다.
+        String.prototype.value = 10;
+
+        const st = "문자열";
+        console.log(st.value);
+
+        //사용례로,
+        //존재하지않는 contain이라는 메서드를 임의로 만들 수 있다
+        //특수 문자열이 해당 문자열에 포함되는지를 확인하기
+        String.prototype.contain = function(다른문자열){
+            return this.indexOf(다른문자열)>=0
+            //indexOf는 찾는문자열의 인덱스값을 찾아준다.
+        }
+        console.log(`st.contain("자열") : ${st.contain("자열")}`)
+
+
+    </script>
+</body>
+</html>

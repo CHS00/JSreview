@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const 입력 = prompt("입력하세요")
+        const 끝자리 = Number(입력[입력.length-1]); //입력 수열의 길이(length)에서 -1하여 위치값 전달
+        
+        // 끝자리 ===1 || 2 || 3 || 4 ;
+        // 와 같이는 사용할 수 없다.
+        if(끝자리 === 1 ||
+        끝자리 === 3 ||
+        끝자리 === 5 ||
+        끝자리 === 7 ||
+        끝자리 === 9){//와 같이 사용한다.
+            alert("홀수입니다");
+        } else{
+            alert("짝수입니다");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //배열과의 비교
+        const array = [100,20,'문자',true,function(){}];
+        console.log(array[0]);
+        console.log(array[1]);
+
+        array[0] = 200;
+        console.log(array[0]);
+
+
+        const object = {
+            //키 = 식별자를 사용함.
+            //식별자의 조건으로는
+            //숫자로 시작하지않는다, _$외에 특문은 사용하지않는다
+            키:"값",
+            name:"구름",
+            age:7
+        }
+        console.log(object.name);
+        console.log(object.age);
+        //배열과같이 값도 변경 가능하다.
+        object.name = "별";
+        object.age = 1;
+        console.log(object.name);
+        console.log(object.age);
+
+        //객체안의 내용은 속성이라 부른다
+        //속성의 함수는 속성이 아니라 메서드라 부른다
+        //(js에선 메서드도 속성에 포함된다)
+        const dog ={
+            name:"구름",
+            age:7,
+            //위는 속성
+
+            bark : function(){
+                console.log(`${this.name}이/가 짖습니다.`)
+                console.log(`${dog.name}이/가 짖습니다.`)
+                //익명함수에서의 this는 자기자신을 나타낸다
+                //따라서 위 두 문장은 같다
+
+                console.log(this);
+                //현재객체를 보낸다
+            },
+            sleep : ()=>{
+                console.log(`${dog.name}이/가 잡니다.`)
+                console.log(this);
+                //현재객체를 바인딩하지않음(외부에서 this를 한것과 같음)
+            }
+            //위는 메서드
+        }
+
+        //익명함수는 this바인딩을 한다
+        //화살표함수는 this바인딩을 안한다
+
+        //this바인딩이란, this를 현재객체와 연결하는 행위
+
+        dog.bark();
+        dog.sleep();
+
+        //this주의점을 간단하게 설명하자면
+        //객체를 만들고 내부에서 this를 활용할때는 화살표가 아닌
+        //익명함수만을 사용한다.
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //addEventListener로 document라는 문서객체에 이벤트 연결
+        //addEventListener의 첫번째 매개변수에는 이벤트의 이름 지정
+        //두번째 매개변수에는 이벤트 발생시 호출할 함수 지정
+        document.addEventListener("DOMContentLoaded",()=>{
+            const header = document.createElement("h1");
+            document.body.appendChild(header)
+
+            let count = 0;
+
+            header.innerText = `클릭횟수 : ${count}`
+
+            header.addEventListener("click",()=>{
+                header.innerHTML = `클릭횟수 : ${++count}`
+            })
+
+            //블록지정을 할수 없게하는 스타일 코드
+            header.style.userSelect = "none"
+
+
+
+            //이벤트 제거
+            let counter = 0;
+            const listener = ()=>{
+                header3.innerText = `클릭횟수 : ${++counter}`
+            }
+
+            const header3 = document.createElement("h3");
+            header3.innerText = `클릭횟수 : 0`
+            header3.style.userSelect = "none"
+
+            const p = document.createElement("p");
+            p.innerText = `이벤트 연결상태 : 해제`
+            
+            const connectButton = document.createElement("button");
+            connectButton.innerText = "이벤트 연결버튼"
+            connectButton.addEventListener("click",()=>{
+                header3.addEventListener("click",listener);
+                p.innerText="이벤트 연결상태 : 연결"
+            })
+            
+            const disconnectButton = document.createElement("button");
+            disconnectButton.innerText = "이벤트 해제버튼"
+            disconnectButton.addEventListener("click",()=>{
+                //removeEventListener를 사용하기 위해서는
+                //사용할 이벤트리스너를 별도의 변수로 지정해야한다.
+                header3.removeEventListener("click",listener)
+                p.innerText="이벤트 연결상태 : 해제"
+            })
+
+            document.body.appendChild(header3)
+            document.body.appendChild(connectButton)
+            document.body.appendChild(disconnectButton)
+            document.body.appendChild(p)
+
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

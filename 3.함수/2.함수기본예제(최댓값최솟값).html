@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const f = function(매개변수, 매개변수) {
+        //     return  리턴값
+        // }
+
+        //윤년찾기.
+        //4로 나눠떨어지지만 100으로는 안되고, 400으로는 나눠져야한다.
+
+        const isLeapYear = function(year) {
+            if(year%4==0){
+                if(year%400==0){
+                    return true;
+                }else if(year%100==0){
+                    return false;
+                }else{
+                    return true;
+                }
+            }else{
+                return false;
+            }
+        };
+        
+        console.log(isLeapYear(2020))
+
+        //더 간단한 코드
+        const isYear = function(year){
+            return (year%4==0)&&(year%100!=0)||(year%400==0)
+        };
+
+
+        console.log(isYear(1900))
+
+        //최솟값 찾기
+        const arr = [52,100,3,78,99,11,23];
+
+        const min = function(array){
+            let minNum = array[0];
+            for (const num of array) {
+                if (num<minNum) {
+                    minNum=num;
+                }
+            }
+            return minNum;
+        }
+
+        console.log(min(arr));
+        
+        //최댓값 찾기
+        const arr2 = [52,100,3,78,99,11,23];
+
+        const max = function(array){
+            let maxNum = array[0];
+            for (const num of array) {
+                if (num>maxNum) {
+                    maxNum=num;
+                }
+            }
+            return maxNum;
+        }
+
+        console.log(max(arr2));
+    </script>
+</body>
+</html>

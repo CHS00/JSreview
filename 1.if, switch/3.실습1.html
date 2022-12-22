@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="id"></h1>
+    <script>
+        // let num = Number(prompt("짝수홀수 판별"));
+199
+        // if(num%2==1){
+        //     document.getElementById("id").innerHTML="홀수네"
+        // }else{
+        //     document.getElementById("id").innerHTML="짝수네"
+        // }
+
+        let ani = ["원숭이","닭","개","돼지","쥐","소","호랑이","토끼","용","뱀","말","양"];
+        let ani1 = '원숭이,닭,개,돼지,쥐,소,호랑이,토끼,용,뱀,말,양'.split(",")
+
+        let year = Number(prompt("태어난연도"))%12;
+
+        document.getElementById("id").innerHTML=ani[year];
+
+        alert(`${ani1[year]}띠입니다.`)
+
+    </script>
+</body>
+</html>

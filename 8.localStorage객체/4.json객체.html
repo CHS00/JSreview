@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            // {
+            //     "color" : "red",
+            //     "message" : "안녕하세요"
+            // }
+            // json은 위와같이 쓴다.
+            // 키는 문자열만, 문자열은 큰따옴표
+
+            const object = {
+                color : 'red',
+                message : '안녕하세요'
+            }
+
+            const string = JSON.stringify(object)
+
+            console.log(string);
+            
+            const other = JSON.parse(string);
+
+            console.log(other);
+            console.log(other.color);
+            console.log(other.message);
+            
+        })
+    </script>
+</head>
+<body>
+    {
+        "color" : "red",
+        "message" : "안녕하세요"
+    }
+    <br>
+    <br>
+    JSON객체로는 <br>
+    JSON.stringify() : 자바스크립트객체를 JSON문자열로 변환할 수 있게 해줌.
+    <br>
+    JSON.parse() : JSON문자열을 자바스크립트 객체로 변환할 수 있게 해줌.
+</body>
+</html>

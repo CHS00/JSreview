@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- JS는 위에서부터 차례로 읽어나가므로
+    body가 존재하지않는 head 위치에서는 body를 불러오면
+    오류가 난다 -->
+    <script>document.body.innerHTML+="<h1>안녕하세요1</h1>"</script>
+    <!-- 문서 객체가 모두 만들어진 뒤에 함수를 사용하고싶을경우에는
+    document.addEventListener('DOMContentLoaded',()=>{}) -->
+    
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            //태그조작을 위해 태그를 읽어들이기 위해서는
+            //각 선택자를 사용한다.
+
+            //태그선택자
+            const h1 = document.querySelector("h1")        
+            h1.style.color = "red";
+
+            //id선택자는 #
+            const orange = document.querySelector("#orange")
+            orange.style.backgroundColor = "orange";
+
+            //클래스선택자는 .
+            document.querySelector(".center.head").style.textAlign = "center"
+
+            //속성선택자는 특정한 속성을 갖고있는지 확인하는 도구
+            document.querySelector("[type=text]").style.borderRadius= "10px";
+
+            //후손선택자
+            //body아래의 모든 input을 잡으라는 뜻
+            document.querySelector("body input").style.backgroundColor = "blue"
+            //복수의 input태그 중에서도 하나만 잡히는걸 볼 수 있는데,
+            //querySelector는 선택자로 잡아지는것 단 하나만 추출한다.
+
+            //모두선택하기위해선 quertSelectorAll
+            for (const i of document.querySelectorAll('input')) {
+                i.style.height = "30px"
+            }
+        })
+    </script>
+    
+    <title>Document</title>
+</head>
+<body>
+
+    <script>document.body.innerHTML+="<h1>안녕하세요2</h1>"</script>
+    
+    <h1 id="orange">아이디는 오렌지</h1>
+
+    <!-- 클레스에서는 띄어쓰기로 복수의 클레스를 갖게할 수 있다. -->
+    <h1 class="center head">클레스는 센터</h1>
+
+    <input type="text">
+    <input type="text">
+
+    <h1 id="header">제목</h1>
+    <!-- 
+        위 태그를 가져오기 위해서는
+        h1
+        #header
+        h1#header
+    -->
+
+    <span class="active">선택</span>
+    <!-- 
+        span
+        .active
+        span.active
+    -->
+
+    <input id="name-input" type="text" name="name">
+    <!-- 
+        input
+        #name-input
+        [type=text]
+        input[type=text]
+    -->
+
+</body>
+</html>

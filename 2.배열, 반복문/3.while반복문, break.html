@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // while true = 무한반복
+        // while (불_표현식) {
+        //     본문
+        // }
+        // true인 경우 본문실행후 처음으로,
+        // false인 경우 종료
+
+        let i = 0
+        // while (true) {
+        //     alert(`${i}번째 알람`);
+        //     i++;
+        // }
+
+        while (confirm("계속하시겠습니까")) {
+            alert(`${i}번째 알람`);
+            i++;
+        }
+
+        //while은 중요한 조건이 있을때 사용
+        //(결과가 나올때까지, 특정시간이 될때까지, 파일을 읽으며 특정단어를 찾을때 까지)
+        //for은 조건보다 횟수를 지정하고싶을 때 사용
+
+        //반복문에서 break를 만날 시 반복문은 종료된다.
+        // while (i<10) {
+        //     alert(`${i}번째 알람`);
+        //     i++;
+        //     break;
+        // }
+        //위 문장은 첫번째를 실행한 후 바로 break를 만나 멈춘다.
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const test1 = function(name,age,color,status="이상없음"){
+            //status를 지정하지않았을때 기본값으로 이상없음이 나오도록함
+            return `${name}:${age}:${color}:${status}`
+        }
+
+        console.log(test1("구름",7,"갈색")); 
+
+        //-----------------------------------------------
+
+        const test =function(object){
+
+            object.status = object.status!==undefined?object.status:"이상없음";
+            
+            //object.status에 빈문자열이나 0과 같이 false 변환되는 값이
+            //오지않는다는것이 명확할 경우에는 아래 두가지 사용가능
+
+            //object.status가 있느냐,
+            //있다면 object.status를 넣어라,
+            //없다면 object.status:"이상없음" 을 넣어라.
+            object.status = object.status?object.status:"이상없음";
+            //?object.status: 부분을 ||로 변경해도 값은 같다.
+            object.status = object.status||"이상없음";
+
+
+            //아래 실행방법들은 아래에서 다시 설명
+            object = {status:"이상없음",...object};
+            fun = function ({name,age,color,status="이상없음"}){
+                return `${name}:${age}:${color}:${status}`
+            }
+            //위 다섯가지방법은 결과가 모두 같다.
+
+
+            return `${object.name}:${object.age}:${object.color}:${object.status}`
+        }
+
+        console.log(test({
+            name:"구름",
+            age:7,
+            color:"갈색"
+        }));
+        //위 test1 보다는 아래 test 방식을 주로 사용한다.
+
+
+        //위의 4번째 방식 설명
+        const dog = {
+            name:"해피",
+            age:3,
+            color:"흰색",
+            status:"골절"
+        }
+        
+        const newDog = {
+            status:"이상없음",
+            ...dog
+        };
+        //newDog의 이상없음을 지우고 dog의 status로 덮어씌워 실행한다
+        //그러므로 ...dog의 위치를 올리면
+        //반대로 덮어씌워지므로 status에는 이상없음이 입력된다
+        console.log(newDog);
+        
+        
+        //위의 5번째 방식 설명
+        const test5 = function ({
+            name,
+            age,
+            color,
+            status="이상없음"
+        }){
+            return `${name}:${age}:${color}:${status}`
+        }
+
+        console.log(test5({
+            name:"뽀삐",
+            age:"5",
+            color:"갈색"
+        }))
+
+        
+        //마지막으로 return에 일일히 object.이 들어가는 건에 관하여
+        const final =function(object){
+            //아래와 같이 const뒤에 객체형태의 무언가를 넣게 된다면,
+            //오른쪽의 객체에서 name,age,color,status속성을 뽑아
+            //변수처럼 사용할 수 있게 만들어 준다.
+            const {name,age,color,status} = {status:"이상없음",...object};
+            
+            return `${name}:${age}:${color}:${status}`
+        }
+
+        console.log(final({
+            name:"뽀삐",
+            age:"5",
+            color:"갈색"
+        }))
+    </script>
+</body>
+</html>

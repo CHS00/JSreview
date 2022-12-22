@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            const checkbox = document.querySelector("input[type=checkbox]")
+            const checkboxResult = document.querySelector("#checkbox")
+            const body = document.body;
+            
+            checkbox.addEventListener("change",()=>{
+                if (checkbox.checked) {
+                    checkboxResult.textContent = "체크"
+                    body.style.backgroundColor="red"
+                }else{
+                    checkboxResult.textContent = "해제"
+                    body.style.backgroundColor="white"
+                }
+            })
+            
+            
+            const radios = 
+            // 라디오버튼 전부를 가져와야하므로 querySelectorAll
+            document.querySelectorAll("input[type=radio][name=gender]");
+            const radioResult = document.querySelector("#radiobutton")
+
+            radios.forEach((radio)=>{
+                radio.addEventListener("change",(e)=>{
+                    radioResult.textContent=`${e.currentTarget.value}이 선택되었습니다.`
+                })
+            })
+
+
+            // let seconds = 0;
+            // let timerId = 0;
+            // 위 식을 아래처럼 다중할당연산 할 수 있다.
+            let [seconds,timerId]=[0,0]
+            const checkboxT = document.querySelector("#timer");
+            const time = document.querySelector("#time");
+
+            checkboxT.addEventListener("change",()=>{
+                if (checkboxT.checked){
+                    timerId = setInterval(()=>{
+                        seconds += 1
+                        time.textContent=`${seconds}초`
+                    // 1000밀리초마다 함수가 실행되게 함
+                    },1000)
+                }else{
+                    clearInterval(timerId)
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <input type="checkbox" name="" id="">
+    <h1 id="checkbox">해제</h1>
+    <br>
+    <!-- 그룹으로 묶기위해서는 name을 같게 설정 -->
+    <input type="radio" name="gender" id="" value="남성">남성<br>
+    <input type="radio" name="gender" id="" value="여성">여성<br>
+    <input type="radio" name="gender" id="" value="직접지정">직접지정
+    <h1 id="radiobutton">선택해주세요</h1>
+
+    <hr>
+    <h1>타이머만들기</h1>
+    <input type="checkbox" id="timer">
+    <h1 id="time">0초</h1>
+</body>
+</html>
