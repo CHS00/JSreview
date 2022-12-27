@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            // 구문오류는 괄호를 닫지않는 등의 이유로 발생한다.
+            // console.log("Hi";
+            // 구문오류는 실행전에 발생하므로
+            // console.log("Hi");를 여러번 입력후
+            // 마지막에만 console.log("Hi";로 오기할 경우
+            // 실행자체가 되지않는다.
+
+
+            // 예외
+            // console.rog("안녕하세요")
+            // 예외는 실행중에 발생하므로 
+            // console.log("안녕하세요")를 여러번 입력 후
+            // 마지막에만 console.rog("안녕하세요")를 입력할 시
+            // 마지막 문장부터 실행되지않는다.
+
+            const h1 = document.querySelector("h1");
+            // h1.textContent="안녕"
+            // 위와같이 입력할 경우 h1이 없으므로 에러 발생
+            // Cannot set properties of null
+            // (h1이 비어있으므로 null 출력)
+            if(h1==null){
+                console.log("오류발생");
+            }else{
+                h1.textContent="안녕"
+            }
+            // 조건문을 활용해 처리할경우 이를 기본예외처리라 한다.
+
+
+            // 고급예외처리는 try, catch를 이용한다.
+            try{
+                // 예외가 발생할 가능성이 있는 코드
+                h1.textContent="안녕"
+            }catch(
+                // 예외객체를 받아옴
+                error){
+                // 예외가 발생했을 때 실행할 코드
+                console.log("오류발생");
+                console.log(error.name);
+                console.log(error.message);
+                // 예외객체에 대한 두가지 속성 name, message
+            }finally{
+                // 무조건적으로 실행되는 코드
+            }
+
+            // 예외같은경우는 이유를 모르는 경우가 많기 때문에
+            // if가 아닌 try catch를 사용하는 것이 좋다.
+        })
+    </script>
+</head>
+<body>
+    <h4>프로그램 실행전에 발생하는 오류 = 구문오류</h4>
+    <p>(SyntaxError)</p>
+    <br>
+    <h4>프로그램 실행중에 발생하는 오류 = 런타임오류 / 예외</h4>
+
+
+</body>
+</html>
