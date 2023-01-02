@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            // 학생관리 프로그램 추상화
+            const students = [
+                {이름: "별이" , 국어: 100, 수학: 80, 영어:80, 한국사:100},
+                {이름: "구름" , 국어: 70, 수학: 80, 영어:100, 한국사:90},
+                {이름: "바다" , 국어: 90, 수학: 100, 영어:80, 한국사:100},
+                {이름: "겨울" , 국어: 100, 수학: 80, 영어:100, 한국사:90}
+            ]
+            
+            console.log(students);
+
+
+            const get총점 = (student)=>{
+                return student.국어+student.수학+student.영어+student.한국사;
+            }
+            
+            const get평균 = (student)=>{
+                return get총점(student)/4;
+            }
+
+            
+            let output = "이름\t총점\t평균\n"
+            
+            for (const student of students) {
+                
+                output += `${student.이름}\t${get총점(student)}점\t${get평균(student)}점\n`
+            }
+
+            console.log(output);
+
+
+            console.log("------------------");
+            // 객체지향프로그래밍화
+            // 객체 -> 자료와 함수가 함께 있는것
+
+
+            for (const student of students) {
+                student.get총점 = function(){
+                    return this.국어+this.수학+this.영어+this.한국사;
+                };
+                student.get평균 = function(){
+                    return this.get총점()/4;
+                };
+            }
+
+            let output2 = "이름\t총점\t평균\n"
+
+            for (const student of students) {
+                
+                output2 += `${student.이름}\t${student.get총점()}점\t${student.get평균()}점\n`
+            }
+
+            console.log(output2);
+            
+            console.log("-------------------")
+            
+            
+            function createStudent(이름,국어,수학,영어,한국사){
+                return{
+                    이름:이름, 국어:국어, 수학:수학, 영어:영어, 한국사:한국사,
+                    get총점2: function(){
+                        return this.국어+this.수학+this.영어+this.한국사;
+                    },
+                    get평균2: function(){
+                        return this.get총점2()/4;
+                    }
+                }
+            }
+
+            const students2 = [
+                createStudent("철수",100,90,80,70),
+                createStudent("영희",100,90,80,70),
+                createStudent("바둑이",100,90,80,70),
+                createStudent("나비",100,90,80,70),
+            ]
+
+            let output3 = "이름\t총점\t평균\n"
+
+            for (const student of students2) {
+                
+                output3 += `${student.이름}\t${student.get총점2()}점\t${student.get평균2()}점\n`
+            }
+
+            console.log(output3);
+            // 위 방식은 무거운 자료형이 여러개 생성되는 문제가 발생한다.
+            // 이로인해 프로토타입, 클래스와 같은 개념이 생겼다.
+            
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

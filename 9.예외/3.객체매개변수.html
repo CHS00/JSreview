@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            function 메일보내기 (발신인,수신인,내용){
+                console.log(`발신인:${발신인}`);
+                console.log(`수신인:${수신인}`);
+                console.log(내용);
+            }
+
+            메일보내기("구름","별","간식줘");
+
+
+            console.log("--------------")
+            
+
+            function isRequired(객체,속성명) {
+                if (typeof(객체[속성명])=='undefined') {
+                    throw `${속성명}매개변수에 문제가 있음`
+                }
+            }
+
+            function 메일보내기2 (객체){
+                isRequired(객체,'발신인')
+                isRequired(객체,'수신인')
+                isRequired(객체,'내용')
+                // 와 같은 방식으로 예외를 발생시킬 수 있다
+                console.log(`발신인:${객체.발신인}`);
+                console.log(`수신인:${객체.수신인}`);
+                console.log(객체.내용);
+            }
+            
+            메일보내기2({
+                발신인: "구름",
+                수신인: "별",
+                내용: "간식줘"
+                // 내욤 이라고 오타를 내는 등의 원인으로 에러 발생한다면?
+                // 따라서 매개변수가 잘못들어왔다는 내용의
+                // 예외를 함수에서 발생시켜야함
+            });
+
+
+            console.log("--------------")
+            
+            
+            function isRequired2(이름) {
+                throw `${이름}이 없어 기본값을 도출합니다.`
+            }
+
+            function 메일보내기3 ({
+                발신인 =isRequired2('발신인'), 
+                수신인 =isRequired2('수신인'), 
+                내용 =isRequired2('내용')
+            }){
+                console.log(`발신인:${발신인}`);
+                console.log(`수신인:${수신인}`);
+                console.log(내용);
+            }
+            
+            메일보내기3({
+                발신인: "구름",
+                수신인: "별",
+                내용: "간식줘"
+            });
+            
+            
+            console.log("--------------")
+
+
+            // 추가
+            function 메일보내기4 ({
+                발신인 = "발신인기본값", 
+                수신인 = "수신인기본값", 
+                내용 = "문제발생!"
+            }){
+                console.log(`발신인:${발신인}`);
+                console.log(`수신인:${수신인}`);
+                console.log(내용);
+            }
+            
+            메일보내기4({}); // ()안에 {}를 넣어야 함수가 정상실행됨
+            
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

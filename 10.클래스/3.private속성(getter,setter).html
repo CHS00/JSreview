@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+
+            class Square{
+                // private속성: 클래스 내부에서만 접근 가능한 속성
+                // 앞에 #을 붙여 선언해둔다
+                #length
+                constructor (length){
+                    if(length<0){
+                        throw '길이는 0이상이어야 합니다'
+                    }
+                    this.#length = length
+                }
+
+                get area(){//사각형의 넓이
+                    return this.#length * this.#length;
+                }
+
+                get perimeter(){//사각형의 둘레
+                    return 4*this.#length;
+                }
+
+
+                set length(length){
+                    if(length<0){
+                        throw '길이는 0이상이어야 합니다'
+                    }
+                    this.#length = length
+                }
+                get length(){
+                    return this.#length
+                    // length의 값을 확인 할 수 있게 함
+                }
+
+            }
+
+            const square = new Square(10);
+
+            console.log(square.area);
+            console.log(square.perimeter);
+            
+
+            // square.#length = -10 다음과 같이 입력하면 에러가 난다
+            square.length = 20
+            // 여담으로 속성앞에 _을 넣어 _length와 같은 속성명이 있다면
+            // 해당 속성은 건드리지 말라는 뜻
+            console.log(square.area);
+            console.log(square.perimeter);
+            
+            // get Length를 이용하여 변경캐함
+            console.log(square.length)
+            square.length=50;
+            console.log(square.length);
+
+            // 정리하자면, get xx set xx는 private변수에 접근하기위해서
+            // 만들어진것이다.
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+
+            // 만들어진 Square객체의 수를 알고 싶을 때
+            class Square{
+                static count = 0
+                static test(){
+                    
+                }
+
+                constructor (length){
+                    Square.count +=1
+                }
+            }
+
+            Square.count = 0
+            
+            Square.test = function(){
+                
+            }
+            // JS에서는 위와같은 방식으로도 속성을 만들 수 있다.
+            // 그러나 클래스 밖에서 이루어진다는 점때문에 클래스 안쪽으로
+            // 넣어주는것이 static이다.
+
+            console.log(Square.count)
+            new Square()
+            new Square()
+            new Square()
+            console.log(Square.count)
+
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
