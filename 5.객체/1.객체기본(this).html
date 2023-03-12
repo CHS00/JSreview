@@ -69,6 +69,34 @@
         //this주의점을 간단하게 설명하자면
         //객체를 만들고 내부에서 this를 활용할때는 화살표가 아닌
         //익명함수만을 사용한다.
+
+        let fn = dog.bark;
+        // fn에 할당하면서 this를 잃어버리게 됨.
+        // (메서드는 .앞에 있는게 this이므로)
+        fn();
+        // 따라서, 위와같이 작성 시, this.name을 불러오지못한다.
+        fn.call(dog)
+        // call은 this를 특정값으로 지정해줄 수 있다.
+        // apply는 call과 동일하나, 매개변수로 배열을 받는다.
+
+        // 아래와같이 메서드에 사용가능
+        function update(birth){
+            this.birth = birth;
+        }
+        
+        update.call(dog,2010)
+        console.log(dog)
+
+        // bind는 함수의 this값을 영구히 바꿀수 있다.
+        function updateBreed(breed){
+            console.log(this)
+            this.breed = breed;
+        };
+        const updateDog = updateBreed.bind(dog);
+        // 위와 같이 작성함으로 updateDog에는 dog를 영구히 this로 지정할 수 있다.
+        updateDog("비숑")
+        console.log(dog);
+
     </script>
 </body>
 </html>
